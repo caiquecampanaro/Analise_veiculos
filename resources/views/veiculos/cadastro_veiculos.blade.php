@@ -22,8 +22,8 @@
 
         <select name="tipo_combustivel" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
             <option selected>Escolha o Combustível...</option>
-            @foreach ($listaTipoVeiculo as $Combustivel)
-            <option value="{{$Combustivel->id_combustivel}}">{{$Combustivel->tipo_combustivel}}</option>
+            @foreach ($listaCombustivel as $combustivel)
+            <option value="{{$combustivel->id_combustivel}}">{{$combustivel->tipo_combustivel}}</option>
             @endforeach
         </select>
 
