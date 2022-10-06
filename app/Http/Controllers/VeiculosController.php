@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Veiculo; // import é a chamada , para a classe saber de onde está vindo essa informação
 use App\Models\TipoVeiculo;
+use App\Models\Combustivel;
 
 class VeiculosController extends Controller
 {
@@ -12,18 +13,20 @@ class VeiculosController extends Controller
 
         $lista = Veiculo::all();
 
-        return view('/veiculos/lista_veiculos',['nome'=>'Caique','idade'=>28,'listaVeiculo'=>$lista]);
+        return view('/veiculos/lista_veiculos',['listaVeiculo'=>$lista]);
     }
 
     public function formularioVeiculo () {
         $lista = TipoVeiculo::all();
-        return view('/veiculos/cadastro_veiculos', ['listaTipoVeiculo'=>$lista]);
+        $combustivel = Combustivel::all();
+        return view('/veiculos/cadastro_veiculos', ['listaTipoVeiculo'=>$lista, 'listaCombustivel'=>$combustivel]);
     }
 
     public function salvarVeiculo (Request $request ) {
 
         $veiculo = new Veiculo;
         $veiculo->fk_tipo_veiculo = $request->tipo_veiculo;
+        $veiculo->fk_tipo_combustivel = $request->tipo_combustivel;
         $veiculo->placa = $request->placa;
         $veiculo->marca = $request->marca;
         $veiculo->modelo = $request->modelo;
@@ -37,6 +40,7 @@ class VeiculosController extends Controller
 
         $veiculo = Veiculo::find($request->id_veiculo);
         $veiculo->fk_tipo_veiculo = $request->tipo_veiculo;
+        $veiculo->fk_tipo_combustivel = $request->tipo_combustivel;
         $veiculo->placa = $request->placa;
         $veiculo->marca = $request->marca;
         $veiculo->modelo = $request->modelo;
@@ -50,7 +54,8 @@ class VeiculosController extends Controller
 
         $veiculo = Veiculo::find($id_veiculo); // find = select do mysql
         $lista = TipoVeiculo::all();
-        return view ('veiculos/atualiza_veiculos', ['atualiza'=>$veiculo, 'listaTipoVeiculo'=>$lista]); // 'atualiza' nome da variavel que vai encontrar na view
+        $combustivel = Combustivel::all();
+        return view ('veiculos/atualiza_veiculos', ['atualiza'=>$veiculo, 'listaTipoVeiculo'=>$lista, 'listaCombustivel'=>$combustivel]); // 'atualiza' nome da variavel que vai encontrar na view
     }
     public function deletarVeiculo ($id_veiculo) {
         Veiculo::find($id_veiculo)->delete();

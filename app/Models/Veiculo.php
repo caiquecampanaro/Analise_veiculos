@@ -14,4 +14,8 @@ class Veiculo extends Model
     public function TipoVeiculo () {
         return $this->belongsTo(TipoVeiculo::class, 'fk_tipo_veiculo');
     }
-}
+
+    public function Combustivel () {
+        return $this->belongsTo(Combustivel::class, 'fk_tipo_combustivel');
+    }
+}   

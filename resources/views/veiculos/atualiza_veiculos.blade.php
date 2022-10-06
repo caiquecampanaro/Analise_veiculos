@@ -16,12 +16,21 @@
     <input type="hidden" name="id_veiculo" value="{{$atualiza->id_veiculo}}">
 
   <div class="form-row">
-    <div class="form-group col-md-6">
-    <select name="tipo_veiculo" value="{{$atualiza->tipo_veiculo}}" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+    <div class="form-group col-md-6 mb-3">
+    <select name="tipo_veiculo" value="{{$atualiza->tipo_veiculo}}" class="custom-select mr-sm-2 mb-3" id="inlineFormCustomSelect">
             <option>Escolha o tipo...</option>
 
             @foreach ($listaTipoVeiculo as $tipoVeiculo)
             <option {{$atualiza->fk_tipo_veiculo == $tipoVeiculo->id ? 'selected' : '' }} value="{{$tipoVeiculo->id}}">{{$tipoVeiculo->tipo_veiculo}}</option>
+             @endforeach
+
+        </select>
+
+        <select name="tipo_combustivel" value="{{$atualiza->tipo_combustivel}}" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+            <option>Escolha o tipo de combustível...</option>
+
+            @foreach ($listaCombustivel as $combustivel)
+            <option {{$atualiza->fk_tipo_combustivel == $combustivel->id_combustivel ? 'selected' : '' }} value="{{$combustivel->id_combustivel}}">{{$combustivel->tipo_combustivel}}</option>
              @endforeach
 
         </select>

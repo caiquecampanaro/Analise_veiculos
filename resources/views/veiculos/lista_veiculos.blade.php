@@ -9,12 +9,13 @@
   <body>
 <h2>Veiculos </h2>
 
-<h4>Nome: {{$nome}}</h4>
-<h4>Idade: {{$idade}}</h4>
+{{-- <h4>Nome: {{$nome}}</h4>
+<h4>Idade: {{$idade}}</h4> --}}
 
 <table class="table table-striped table-bordered">
     <thead>
         <th>Tipo veiculo</th>
+        <th>Combustivel</th>
         <th>placa</th>
         <th>marca</th>
         <th>modelo</th>
@@ -27,6 +28,7 @@
 
 <tr>
             <td>{{$veiculo->TipoVeiculo->tipo_veiculo}}</td>
+            <td>{{$veiculo->combustivel->tipo_combustivel}}</td>
             <td>{{$veiculo->placa}}</td>
             <td>{{$veiculo->marca}}</td>
             <td>{{$veiculo->modelo}}</td>
